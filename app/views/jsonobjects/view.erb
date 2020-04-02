@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/css/renderjson.css">
+<div class="row mb-3">
+  <div class="col">
+<h1>Jsonobject: <%= @jsonobject.title.empty? ? @jsonobject.id : @jsonobject.title %></h1>
+<b>Created: </b><%= @jsonobject.created_at %><br>
+<b>Updated: </b><%= @jsonobject.updated_at %><br>
+<b>Schema: </b><a href=/schemas/<%=@jsonobject.schema.id %>><%= @jsonobject.schema.title %></a>
+</div>
+</div>
+<div class="row">
+  <div class="col">
+<h2>Data</h2>
+<div id="jsondata"></div>
+<a class="btn btn-lg btn-primary" href="<%= @jsonobject.id %>/edit" title="edit" ><i class="fa fa-pencil-square-o"></i></a>
+<button type="button" class="btn btn-lg btn-primary" id='copy' title="copy"><i class="fa fa-files-o"></i></button>
+<% if @jsonobject.public %>
+  <button id="sharebtn" class="btn btn-lg btn-primary" title="share" ><i class="fa fa-share-alt"></i></button>
+<% end %>
+</div>
+</div>
+
+<script type="text/javascript" src="/js/renderjson.js"></script>
+
+<script>
+  var jsonobject = <%= @jsonobject.jsonstr.to_json %>
+  renderjson.set_show_to_level(2)
+  document.getElementById("jsondata").appendChild(
+        renderjson(jsonobject)
+  );
+
+document.getElementById('copy').addEventListener('click',function() {
+  const form = document.createElement('form');
+  form.method = 'post';
+  form.action = '/jsonobjects';
+  // add schema and jsonstr to form
+  titleField = document.createElement('input');
+  titleField.type = 'hidden';
+  titleField.name = 'title';
+  titleField.value = "Copy of " + "<%= @jsonobject.title %>"
+  schemaField = document.createElement('input');
+  schemaField.type = 'hidden';
+  schemaField.name = 'schema';
+  schemaField.value = '<%= @jsonobject.schema.id %>';
+  jsonstrField = document.createElement('input');
+  jsonstrField.type = 'hidden';
+  jsonstrField.name = 'jsonstr';
+  jsonstrField.value = JSON.stringify(jsonobject);
+
+  form.appendChild(titleField);
+  form.appendChild(schemaField);
+  form.appendChild(jsonstrField);
+
+  document.body.appendChild(form);
+  form.submit();
+});
+
+</script>
+
+  <script>
+            if(navigator.share || true){
+          var target = document.getElementById("sharebtn");
+          target.addEventListener('click', () => {
+            navigator.share({
+              title: '<%= @jsonobject.title %>',
+              text: "Link to json object: ",
+              url: window.location.href
+            }).catch(err => {
+              console.log("Could not share. Error:", err.message);
+            });
+          });
+
+          target.style = "";
+        }
+  </script>

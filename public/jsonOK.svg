@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg-001"
+   height="159.99998"
+   width="188.63824"
+   version="1.1">
+  <title
+     id="title-001">JSON logo</title>
+  <defs
+     id="gradients-001">
+    <linearGradient
+       id="linearGradient4554">
+      <stop
+         id="stop4550"
+         style="stop-color:#000000;stop-opacity:1"
+         offset="0" />
+      <stop
+         offset="1"
+         style="stop-color:#00b305;stop-opacity:1"
+         id="stop4558" />
+      <stop
+         id="stop4552"
+         style="stop-color:#00ff06;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient8385">
+      <stop
+         id="stop4537"
+         style="stop-color:#000000;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop4539"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient8385-0">
+      <stop
+         offset="0"
+         style="stop-color:#000000;stop-opacity:1"
+         id="stop8387" />
+      <stop
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:1"
+         id="stop8389" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="matrix(0.99884,0,0,0.998699,689.00774,-388.84375)"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient8385-0"
+       id="linearGradient3002"
+       y2="413.0452"
+       x2="-666.11639"
+       y1="525.90778"
+       x1="-553.26971" />
+    <linearGradient
+       gradientTransform="matrix(0.99884,0,0,0.998699,689.00774,-388.84375)"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient8385-0"
+       id="linearGradient3005"
+       y2="525.90759"
+       x2="-553.2699"
+       y1="413.04492"
+       x1="-666.11664" />
+    <linearGradient
+       gradientTransform="translate(3.3898305,11.525424)"
+       y2="-9.2452374"
+       x2="183.89249"
+       y1="95.161545"
+       x1="69.676369"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient4556"
+       xlink:href="#linearGradient4554" />
+  </defs>
+  <metadata
+     id="metadata-json-logo">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>JSON logo</dc:title>
+        <dc:date>2011-09-05 22:42:49</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>fzap</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>PD</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>openclipart.org</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:description>JSON-Logo adapted from the JSON-Website: http://json.org</dc:description>
+        <dc:language>en_GB</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>json</rdf:li>
+            <rdf:li>logo</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:url(#linearGradient3005);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.5;marker:none"
+     id="path7508"
+     d="m 79.8646,119.09957 c 35.39768,48.25534 70.03957,-13.46852 69.98868,-50.58675 C 149.79308,24.62677 105.31237,0.09912988 79.8356,0.09912988 38.94318,0.09912988 0,33.89521 0,80.13502 c 0,51.396 44.64038,79.86497 79.8356,79.86497 C 71.87113,158.85324 45.3294,153.16604 44.97268,92.033223 44.73281,50.68662 58.46025,34.16771 79.77795,41.43417 c 0.47743,0.17707 23.51392,9.26451 23.51392,38.95053 0,29.55992 -23.42727,38.71487 -23.42727,38.71487 z" />
+  <path
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:url(#linearGradient3002);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.5;marker:none"
+     id="path7510"
+     d="M 79.82327,41.40081 C 56.43322,33.33893 27.78025,52.61662 27.78025,91.229623 c 0,63.047977 46.72055,68.770367 52.38416,68.770367 C 121.05683,159.99999 160,126.20391 160,79.9641 160,28.5681 115.35962,0.09912988 80.16441,0.09912988 89.91252,-1.2508701 132.70528,10.64904 132.70528,69.13593 c 0,38.14117 -31.95286,58.90496 -52.73547,50.03344 -0.47743,-0.17707 -23.51392,-9.26451 -23.51392,-38.95053 0,-29.55992 23.36738,-38.81803 23.36738,-38.81803 z" />
+  <text
+     id="text4525"
+     y="123.38982"
+     x="50.169487"
+     style="font-style:normal;font-weight:normal;font-size:45px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient4556);fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       style="font-size:192px;fill:url(#linearGradient4556);fill-opacity:1"
+       y="123.38982"
+       x="50.169487"
+       id="tspan4523">✔</tspan></text>
+</svg>

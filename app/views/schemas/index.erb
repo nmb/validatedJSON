@@ -1,0 +1,24 @@
+<div class="row">
+<div class="col">
+<table>
+<% @schemas.each do |s| %>
+  <tr id="<%= s.id %>">
+    <td><a href="/schemas/<%= s.id %>"><%= s.title %></td>
+    <% if session[:userid] %>
+      <td><a class="btn btn-lg btn-primary" href="/jsonobjects/new?schema=<%= s.id %>" title="Create object"><i class="fa fa-file-o"></i></a></td>
+      <% end %>
+  </tr>
+<% end %>
+</table>
+</div>
+</div>
+<div class="row">
+<div class="col">
+<% if session[:userid] && (User.find(session[:userid]).editor || User.find(session[:userid]).admin) %>
+  <a class="btn btn-lg btn-primary" href="/schemas/new" title="Add Schema"><i class="fa fa-plus"></i></a>
+<% else %>
+  Registered users can create objects conforming to the schemas. Users with
+  <em> editor </em> privileges can also add new schemas.
+<% end %>
+</div>
+</div>

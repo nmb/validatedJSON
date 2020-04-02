@@ -1,0 +1,18 @@
+<p>Logged in as <var><%= session[:name] %></var>.</p>
+<p>
+<a class="btn btn-lg btn-primary m-4"  href="/profile/token"><i class="fa fa-key"></i> API Token</a>
+ <details>
+  <summary>API token usage</summary>
+  <p>The tokens can be used for interacting with this application from the
+  command line. Use the token by including it as an authorization header in the
+  requests, e.g. if the token is saved to a file <var>token</var>, then you can
+  access <var>URL</var> by:
+  <pre>
+   curl -H "Authorization: Bearer $(cat token)" \
+   -H 'Accept: application/json' URL
+  </pre>
+  </p>
+  <p>Tokens are valid for one hour.</p>
+ </details>
+</p>
+<a class="btn btn-lg btn-primary m-4"  href="/logout"><i class="fa fa-sign-out"></i> Log out</a>

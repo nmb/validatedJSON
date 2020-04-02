@@ -1,0 +1,77 @@
+<link href='https://use.fontawesome.com/releases/v5.6.1/css/all.css' rel='stylesheet' type='text/css'>
+<script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" name="title" value="<%= @jsonobject.title %>" required>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="public" name="public" <%= @jsonobject.public ? "checked" : "" %> >
+    <label for="public">Public resource</label>
+  </div>
+
+  <div id='editor_holder'></div>
+  <button id='submit'>Submit</button>
+  <script>
+
+    var editor = new JSONEditor(document.getElementById('editor_holder'),{
+ajax: true,
+theme: 'bootstrap4',
+iconlib: 'fontawesome5',
+collapsed: true,
+compact: true,
+object_layout: 'grid',
+schema: 
+      <%= @jsonobject.schema.jsonstr %>
+});
+
+//editor.getEditor('root.dmp.created').disable();
+//editor.getEditor('root.dmp.modified').disable();
+
+// Load initial data
+var initialData = <%= @jsonobject.jsonstr.to_json %>;
+if(initialData){
+  editor.setValue(initialData);
+}
+
+// Hook up the submit button to log to the console
+document.getElementById('submit').addEventListener('click',function() {
+  var currentLocation = window.location;
+  const form = document.createElement('form');
+  form.method = 'post';
+  if(currentLocation.pathname.match(/\/edit/)) {
+    console.log("edit");
+    form.action = currentLocation.pathname.replace(/\/edit/,"");
+  } else {
+    form.action = currentLocation.pathname.replace(/\/new/,"");
+  }
+  // add schema and jsonstr to form
+  schemaField = document.createElement('input');
+  schemaField.type = 'hidden';
+  schemaField.name = 'schema';
+  schemaField.value = currentLocation.search.split('=').pop();
+  jsonstrField = document.createElement('input');
+  jsonstrField.type = 'hidden';
+  jsonstrField.name = 'jsonstr';
+  jsonstrField.value = JSON.stringify(editor.getValue());
+
+  // add hidden field to mark an edit, use existing schema id
+  if(currentLocation.pathname.match(/\/edit/)) {
+    updateField = document.createElement('input');
+    updateField.type = 'hidden';
+    updateField.name = '_method';
+    updateField.value = 'put';
+    form.appendChild(updateField);
+    schemaField.value = "<%= @jsonobject.schema.id %>";
+  }
+  form.appendChild(schemaField);
+  form.appendChild(jsonstrField);
+
+  // add title field
+  form.appendChild(document.getElementById("title"));
+  form.appendChild(document.getElementById("public"));
+  document.body.appendChild(form);
+  form.submit();
+});
+</script>
+

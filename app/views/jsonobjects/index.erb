@@ -1,0 +1,15 @@
+<% if session[:userid] %>
+<script type="text/javascript" src="/js/updates.js"></script>
+<table>
+<% @jsonobjects.each do |j| %>
+  <tr id="<%= j.id %>">
+    <td><%= j.title.empty? ? j.id : j.title %></td>
+    <td><a class="btn btn-lg btn-primary" href="/jsonobjects/<%= j.id %>" title="view" ><i class="fa fa-eye"></i></a></td>
+    <td><a class="btn btn-lg btn-primary" href="/jsonobjects/<%= j.id %>/edit" title="edit"><i class="fa fa-pencil-square-o"></i></a></td>
+    <td><a class="btn btn-lg btn-warning" onclick="deleteObject('<%= j.id %>', '/jsonobjects/')" title="delete"><i class="fa fa-trash-o"></i></a></td>
+  </tr>
+<% end %>
+</table>
+<% else %>
+  Please <a href="/signin">sign in</a> in order to create and view your json objects.
+<% end %>

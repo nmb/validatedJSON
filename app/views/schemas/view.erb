@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/css/renderjson.css">
+<h1>Schema: <%= @schema.title %></h1>
+<p><%= @schema.description %></p>
+
+<div id="schemadata"></div>
+<% if session[:userid] %>
+  <td><a class="btn btn-lg btn-primary" href="/jsonobjects/new?schema=<%= @schema.id %>" title="Create object">
+      <i class="fa fa-file-o"></i> Create object</a></td>
+<% end %>
+
+<script type="text/javascript" src="/js/renderjson.js"></script>
+<script>
+  renderjson.set_show_to_level(2)
+  document.getElementById("schemadata").appendChild(
+        renderjson(<%= @schema.jsonstr %>)
+    );
+</script>
+
