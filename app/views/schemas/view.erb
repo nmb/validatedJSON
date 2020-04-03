@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/renderjson.css">
 <h1>Schema: <%= @schema.title %></h1>
-<p><%= @schema.description %></p>
+<p><%= Kramdown::Document.new(@schema.description).to_html %></p>
 
 <div id="schemadata"></div>
 <% if session[:userid] %>

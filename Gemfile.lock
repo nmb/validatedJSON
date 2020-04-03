@@ -33,6 +33,7 @@ GEM
       regexp_parser (~> 1.5)
       uri_template (~> 0.7)
     jwt (2.2.1)
+    kramdown (2.1.0)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     mongo (2.11.4)
@@ -136,6 +137,7 @@ DEPENDENCIES
   json (>= 2.3.0)
   json_schemer
   jwt
+  kramdown
   mongoid
   omniauth-github
   omniauth-google-oauth2
