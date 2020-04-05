@@ -1,6 +1,7 @@
 require 'mongoid'
 require 'json'
 require 'json_schemer'
+require 'hashie'
 
 class Schema
   include Mongoid::Document
@@ -19,8 +20,11 @@ class Schema
   validates_length_of :description, minimum: 0, maximum: 512
 
   def validjson
+    schema = JSON.parse(jsonstr)
+    schema.extend Hashie::Extensions::DeepFind
+    errors.add(:jsonstr, 'References in schemas not supported.') if schema.deep_find("$ref")
     validator = JSONSchemer.schema(JSON.parse(metaschema.jsonstr))
-    errors.add(:jsonstr, 'Data invalid') unless validator.valid?(JSON.parse(jsonstr))
+    errors.add(:jsonstr, 'Data invalid') unless validator.valid?(schema)
   end
 
   protected
