@@ -20,16 +20,18 @@ class ValidatedJSON
   end
   post '/schemas' do
     editorprotected!
-    params["title"] = Sanitize.clean(params["title"])
-    params["description"] = Sanitize.clean(params["description"])
-    if(params["jsonstr"] && params["title"])
-      s = Schema.create!(params.merge({:metaschema => Metaschema.all.first(), :user=>session["userid"]}))
+    cleanParams = {}
+    cleanParams["title"] = Sanitize.clean(params["title"])
+    cleanParams["description"] = Sanitize.clean(params["description"])
+    cleanParams[:public] = params[:public] ? true : false
+    cleanParams.merge!({:metaschema => Metaschema.all.first()})
+    cleanParams.merge!({:user => getUserId })
+    p getUserId
+    # jsonstr either as part of POST, or via file upload
+    if(params["jsonstr"])
+      s = Schema.create!(cleanParams.merge({:jsonstr => params["jsonstr"]}))
     else
-      s = Schema.create!({:title => params["title"], 
-                         :description => params["description"], 
-                         :jsonstr => File.open(params[:jsonstrfile][:tempfile]).read, 
-                         :metaschema => Metaschema.all.first(),
-                         :user=>session["userid"]})
+      s = Schema.create!(cleanParams.merge({:jsonstr => File.open(params[:jsonstrfile][:tempfile]).read}))
     end
     s.save
     redirect "/schemas/#{s.id}"
