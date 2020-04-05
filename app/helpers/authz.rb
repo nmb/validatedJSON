@@ -25,18 +25,19 @@ helpers do
   end
   def editorprotected!
     protected!
-    halt 401, "Not authorized\n" unless User.find(session[:userid]).editor || User.find(session[:userid]).admin
+    u = getUserId
+    halt 401, "Not authorized\n" unless User.find(u).editor || User.find(u).admin
   end
   def adminprotected!
     protected!
-    halt 401, "Not authorized\n" unless User.find(session[:userid]).admin
+    u = getUserId
+    halt 401, "Not authorized\n" unless User.find(u).admin
   end
   def generateJWT
     halt unless session[:userid]
     require 'jwt'
-    hmac_secret = "secret"
     exp = Time.now.to_i + 4 * 3600
-    payload = { userid: session[:userid], exp: exp }
+    payload = { userid: session[:userid].to_s, exp: exp }
     JWT.encode payload, settings.jwtsecret, 'HS256'
   end
 
