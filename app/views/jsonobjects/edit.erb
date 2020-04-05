@@ -11,7 +11,7 @@
   </div>
 
   <div id='editor_holder'></div>
-  <button id='submit'>Submit</button>
+  <button id='submit' class="btn btn-lg btn-primary" <%= session[:userid] ? '': "title=\"Log in to create object.\" disabled" %> >Submit</button>
   <script>
 
     var editor = new JSONEditor(document.getElementById('editor_holder'),{
