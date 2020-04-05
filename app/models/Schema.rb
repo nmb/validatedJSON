@@ -9,7 +9,7 @@ class Schema
   field :title, type: String
   field :description, type: String, default: ""
   field :jsonstr, type: String
-  field :active, type: Boolean, default: false
+  field :public, type: Boolean, default: false
   belongs_to :metaschema
   belongs_to :user
   has_many :jsonobjects
