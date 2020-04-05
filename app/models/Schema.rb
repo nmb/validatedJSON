@@ -22,7 +22,9 @@ class Schema
   def validjson
     schema = JSON.parse(jsonstr)
     schema.extend Hashie::Extensions::DeepFind
-    errors.add(:jsonstr, 'References in schemas not supported.') if schema.deep_find("$ref")
+    if schema.deep_find_all("$ref").to_a.any?{|r| r !~ /^#/}
+      errors.add(:jsonstr, 'References in schemas not supported.')
+    end
     validator = JSONSchemer.schema(JSON.parse(metaschema.jsonstr))
     errors.add(:jsonstr, 'Data invalid') unless validator.valid?(schema)
   end
