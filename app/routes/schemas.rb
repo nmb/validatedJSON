@@ -1,6 +1,16 @@
 class ValidatedJSON
   get '/schemas/?' do
-    @schemas = Schema.all
+    uid = getUserId
+    if(uid)
+      user = User.find(uid)
+      if(user.admin)
+        @schemas = Schema.all
+      else
+        @schemas = Schema.where(public: true).union.where(user: user)
+      end
+    else
+      @schemas = Schema.where(public: true)
+    end
     erb :"schemas/index"
   end
   get '/schemas/new' do
@@ -9,6 +19,7 @@ class ValidatedJSON
   get '/schemas/:schema_id' do |schema_id|
     begin
     @schema = Schema.find(schema_id)
+    ownerprotected!(@schema) unless @schema.public
     if(params["format"] == "json" || request.preferred_type().to_s == "application/json")
       @schema.jsonstr
     else
@@ -26,7 +37,6 @@ class ValidatedJSON
     cleanParams[:public] = params[:public] ? true : false
     cleanParams.merge!({:metaschema => Metaschema.all.first()})
     cleanParams.merge!({:user => getUserId })
-    p getUserId
     # jsonstr either as part of POST, or via file upload
     if(params["jsonstr"])
       s = Schema.create!(cleanParams.merge({:jsonstr => params["jsonstr"]}))
