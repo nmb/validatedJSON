@@ -45,5 +45,7 @@ class ValidatedJSON
   get '/signin' do
     erb :"home/signin"
   end
-
+  get '/cookiesinfo' do
+    session[:cookiesInfo] = true
+  end
 end
