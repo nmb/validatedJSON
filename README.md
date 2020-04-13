@@ -9,8 +9,11 @@ Web app for structured JSON data.
 
 ## Technical information
 * Web app based on the [sinatra](http://sinatrarb.com/) framework.
-* html form generation using [json-editor](https://github.com/json-editor/json-editor).
+* Data stored in [mongodb](https://www.mongodb.com/).
+* HTML form generation using [json-editor](https://github.com/json-editor/json-editor).
+* JSON display by [renderjson](http://caldwell.github.io/renderjson/).
 * Authentication via OAuth (web) and JWT (api).
+* Social media sharing using [web-share-shim](https://github.com/nimiq/web-share-shim).
 
 ## Local development
 
