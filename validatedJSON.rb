@@ -10,9 +10,8 @@ class ValidatedJSON < Sinatra::Application
   set :views, Proc.new { File.join(root, "app/views") }
   #use Rack::Csrf, raise: true
 
-  #use Rack::Session::Cookie
-  #use Rack::Session::Pool
-  use Rack::Session::Cookie, secret: "abc123"
+  session_secret = ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+  use Rack::Session::Cookie, secret: session_secret
   use OmniAuth::Builder do
     provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
     provider :google_oauth2, ENV["GOOGLEOAUTH2ID"], ENV["GOOGLEOAUTH2SECRET"],
