@@ -8,10 +8,6 @@ class ValidatedJSON
     session[:name] = nil
     redirect to('/')
   end
-  post '/auth/:name/callback' do
-    auth = request.env['omniauth.auth']
-    print auth
-  end
   get '/auth/:name/callback' do
     auth = request.env['omniauth.auth']
     if(auth.valid?)
