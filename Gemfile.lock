@@ -76,7 +76,7 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
-    puma (4.3.7)
+    puma (5.1.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -99,7 +99,7 @@ GEM
       rack (>= 1.0)
       rack-test (~> 0.6.2)
       ripl (>= 0.7.0)
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     sanitize (5.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.8.0)
@@ -111,6 +111,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     sassc (2.4.0)
       ffi (~> 1.9)
+    sd_notify (0.1.0)
     sinatra (2.1.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
@@ -148,11 +149,12 @@ DEPENDENCIES
   mongoid
   omniauth-github
   omniauth-google-oauth2
-  puma (~> 4.3)
+  puma (~> 5.1)
   rack_csrf (~> 2.6)
   sanitize
   sass (~> 3.7)
   sassc (~> 2.2)
+  sd_notify
   sinatra (~> 2.0)
   sinatra-contrib (~> 2.0)
   tux (~> 0.3)

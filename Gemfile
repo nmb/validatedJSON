@@ -4,7 +4,8 @@ gem 'sinatra', '~> 2.0'
 gem 'sinatra-contrib', '~> 2.0', require: false
 gem 'encrypted_cookie', '0.0.5'
 gem 'rack_csrf', '~> 2.6', require: 'rack/csrf'
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.1'
+gem 'sd_notify'
 gem 'tux', '~> 0.3', require: false
 gem 'uglifier', '~> 4.2', require: false
 gem 'sass', '~> 3.7', require: false
