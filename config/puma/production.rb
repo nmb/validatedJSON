@@ -1,15 +1,11 @@
 environment 'production'
-bind 'unix:///path/to/shared/tmp/sockets/puma.sock'
-pidfile '/path/to/shared/tmp/pids/puma.pid'
-ctl_socket = '/path/to/shared/tmp/sockets/pumactl.sock'
-state_path '/path/to/shared/tmp/sockets/puma.state'
-activate_control_app 'unix:///path/to/shared/tmp/sockets/pumactl.sock'
-daemonize
+pidfile './tmp/pids/puma.pid'
+ctl_socket = './tmp/sockets/pumactl.sock'
+state_path './tmp/sockets/puma.state'
 quiet
 
 threads 5, 5
 workers 2
-preload_app!
 
 before_fork do
   ValidatedJSON::DB.disconnect if defined?(ValidatedJSON::DB)
