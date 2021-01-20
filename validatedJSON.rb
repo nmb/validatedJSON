@@ -42,6 +42,7 @@ class ValidatedJSON < Sinatra::Application
 
   configure :production do
     # Serve assets via Nginx or Apache
+    disable :show_exceptions
     disable :static
   end
 
