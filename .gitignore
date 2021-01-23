@@ -1,4 +1,5 @@
 *.swp
 notes.txt
 .env
+tmp/
 
