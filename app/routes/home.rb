@@ -2,7 +2,7 @@ class ValidatedJSON
   get '/' do
     erb :"home/index"
   end
-  get "/logout" do
+  get '/logout' do
     logger.info "Logout: #{session[:name]}\n"
     session[:userid] = nil
     session[:name] = nil
@@ -10,10 +10,10 @@ class ValidatedJSON
   end
   get '/auth/:name/callback' do
     auth = request.env['omniauth.auth']
-    if(auth.valid?)
-      uid = auth['provider']+':'+ auth['uid']
-      unless(User.where(uid: uid).exists?)
-        User.create!(:uid => uid, :username => auth['info'].name)
+    if auth.valid?
+      uid = auth['provider'] + ':' + auth['uid']
+      unless User.where(uid: uid).exists?
+        User.create!(uid: uid, username: auth['info'].name)
         logger.info "New user: #{auth['info'].name}\n"
       end
       u = User.find_by(uid: uid)
@@ -24,16 +24,16 @@ class ValidatedJSON
     redirect to('/')
   end
   get '/profile' do
-    if(session[:userid])
+    if session[:userid]
       erb :"home/profile"
     else
       redirect to('/')
     end
   end
   get '/profile/token' do
-    if(session[:userid])
-    content_type "application/jwt"  
-    generateJWT
+    if session[:userid]
+      content_type 'application/jwt'
+      generateJWT
     else
       redirect to('/')
     end

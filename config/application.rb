@@ -1,4 +1,4 @@
-%w{/app/models /app/helpers /app/routes}.each do |dir|
+%w[/app/models /app/helpers /app/routes].each do |dir|
   resource_dir = Sinator::ROOT + dir
 
   Dir[File.join(resource_dir, '**/*.rb')].each do |file|
@@ -6,10 +6,9 @@
   end
 end
 
-if(Metaschema.empty?)
+if Metaschema.empty?
   print "Obtaining metaschema\n"
-  msstr = Net::HTTP.get(URI("http://json-schema.org/draft-04/schema#"))
-  m = Metaschema.create(:jsonstr => msstr)
+  msstr = Net::HTTP.get(URI('http://json-schema.org/draft-04/schema#'))
+  m = Metaschema.create(jsonstr: msstr)
   m.save
 end
-

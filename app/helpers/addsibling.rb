@@ -1,13 +1,8 @@
 require 'json'
 
 def addSiblings(h, siblingKey, subh)
-  h.each do |key, value|
-    if(value.class == Hash)
-      addSiblings(value, siblingKey, subh)
-    end
+  h.each do |_key, value|
+    addSiblings(value, siblingKey, subh) if value.instance_of?(Hash)
   end
-    if(h.has_key?(siblingKey)) 
-      h.merge!(subh)
-    end
+  h.merge!(subh) if h.has_key?(siblingKey)
 end
-

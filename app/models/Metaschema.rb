@@ -14,5 +14,4 @@ class Metaschema
     jsonobj = JSON.parse(jsonstr)
     errors.add(:jsonstr, 'Data invalid') unless JSONSchemer.schema(jsonobj).valid?(jsonobj)
   end
-
 end

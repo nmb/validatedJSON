@@ -1,5 +1,5 @@
 require 'mongoid'
-class User 
+class User
   include Mongoid::Document
   field :uid, type: String
   field :username, type: String

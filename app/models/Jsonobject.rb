@@ -5,10 +5,10 @@ require 'json_schemer'
 class Jsonobject
   include Mongoid::Document
   include Mongoid::Timestamps
-  field :title, type: String, default: ""
+  field :title, type: String, default: ''
   field :jsonstr, type: Hash
   field :public, type: Boolean, default: false
-  
+
   belongs_to :schema
   belongs_to :user
 
