@@ -1,7 +1,11 @@
 class ValidatedJSON
   get '/jsonobjects/?' do
     @jsonobjects = Jsonobject.where(user: getUserId)
-    erb :"jsonobjects/index"
+    if params['format'] == 'json' || request.preferred_type.to_s == 'application/json'
+      JSON.pretty_generate(JSON.parse(@jsonobjects.to_json))
+    else
+      erb :"jsonobjects/index"
+    end
   end
   get '/jsonobjects/new/?' do
     begin
@@ -20,7 +24,7 @@ class ValidatedJSON
       @jsonobject = Jsonobject.find(jsonobject_id)
       ownerprotected!(@jsonobject) unless @jsonobject.public
       if params['format'] == 'json' || request.preferred_type.to_s == 'application/json'
-        @jsonobject.jsonstr.to_json
+        JSON.pretty_generate(JSON.parse(@jsonobject.to_json))
       else
         erb :"jsonobjects/view"
       end
@@ -42,10 +46,11 @@ class ValidatedJSON
   end
   post '/jsonobjects/?' do
     protected!
+    user = getUserId
     j = Jsonobject.create!(schema: params[:schema],
                            jsonstr: JSON.parse(params[:jsonstr]),
                            title: Sanitize.clean(params[:title]),
-                           user: session['userid'])
+                           user: user)
     j.save!
     redirect('/jsonobjects/' + j.id)
   end
