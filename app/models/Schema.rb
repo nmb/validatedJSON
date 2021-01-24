@@ -1,7 +1,8 @@
 require 'mongoid'
 require 'json'
-require 'json_schemer'
+require 'json-schema'
 require 'hashie'
+require 'irb'
 
 class Schema
   include Mongoid::Document
@@ -14,7 +15,7 @@ class Schema
   belongs_to :user
   has_many :jsonobjects
 
-  before_validation :lockdown
+  #before_validation :lockdown
   validate :validjson
   validates_length_of :title, minimum: 3, maximum: 64
   validates_length_of :description, minimum: 0, maximum: 512
@@ -23,10 +24,10 @@ class Schema
     schema = JSON.parse(jsonstr)
     schema.extend Hashie::Extensions::DeepFind
     if schema.deep_find_all('$ref').to_a.any? { |r| r !~ /^#/ }
-      errors.add(:jsonstr, 'References in schemas not supported.')
+      errors.add(:jsonstr, 'External references in schemas not supported.')
     end
-    validator = JSONSchemer.schema(JSON.parse(metaschema.jsonstr))
-    errors.add(:jsonstr, 'Data invalid') unless validator.valid?(schema)
+    metaschema = JSON::Validator.validator_for_name("draft4").metaschema
+    errors.add(:jsonstr, 'Data invalid') unless JSON::Validator.validate(metaschema, jsonstr)
   end
 
   protected
