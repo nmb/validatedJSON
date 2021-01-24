@@ -23,7 +23,7 @@ class Schema
   def validjson
     schema = JSON.parse(jsonstr)
     schema.extend Hashie::Extensions::DeepFind
-    if schema.deep_find_all('$ref').to_a.any? { |r| r !~ /^#/ }
+    if schema.deep_find_all('$ref').to_a.any? { |r| r.class == String && r !~ /^#/ }
       errors.add(:jsonstr, 'External references in schemas not supported.')
     end
     metaschema = JSON::Validator.validator_for_name("draft4").metaschema
