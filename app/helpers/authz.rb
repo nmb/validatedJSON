@@ -8,7 +8,7 @@ helpers do
         payload, header = JWT.decode token, settings.jwtsecret, true, { algorithm: 'HS256' }
         payload['userid']
       rescue StandardError
-        nil
+        "Error validating token"
       end
     end
   end

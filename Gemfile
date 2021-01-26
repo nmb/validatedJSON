@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'json', '>=2.3.0'
+gem 'json_refs'
 gem 'json-schema'
 gem 'json_schemer'
 gem 'jwt'

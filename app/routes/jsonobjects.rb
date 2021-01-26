@@ -1,3 +1,5 @@
+require 'json_refs'
+
 class ValidatedJSON
   get '/jsonobjects/?' do
     @jsonobjects = Jsonobject.where(user: getUserId)
@@ -47,8 +49,16 @@ class ValidatedJSON
   post '/jsonobjects/?' do
     protected!
     user = getUserId
+    if params['jsonstr']
+      jsonstr = JSON.parse(params[:jsonstr])
+    elsif params[:jsonstrfile]
+      jsonstr = JsonRefs.(JSON.parse(File.open(params[:jsonstrfile][:tempfile]).read))
+    else
+      jsonstr = ""
+    end
+    print "User: #{user}\n"
     j = Jsonobject.create!(schema: params[:schema],
-                           jsonstr: JSON.parse(params[:jsonstr]),
+                           jsonstr: jsonstr,
                            title: Sanitize.clean(params[:title]),
                            user: user)
     j.save!
