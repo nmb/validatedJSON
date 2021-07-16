@@ -41,7 +41,7 @@ GEM
       regexp_parser (~> 2.0)
       uri_template (~> 0.7)
     jwt (2.2.2)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     mini_portile2 (2.5.0)
     minitest (5.14.3)
@@ -98,7 +98,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.0.3)
-    rexml (3.2.4)
+    rexml (3.2.5)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
