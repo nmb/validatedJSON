@@ -43,7 +43,7 @@ GEM
     jwt (2.2.2)
     kramdown (2.3.1)
       rexml
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.8.0)
     minitest (5.14.3)
     mongo (2.14.0)
       bson (>= 4.8.2, < 5.0.0)
@@ -56,8 +56,8 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
-    nokogiri (1.11.4)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.13.4)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     nokogumbo (2.0.4)
       nokogiri (~> 1.8, >= 1.8.4)
@@ -85,7 +85,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.6.4)
       nio4r (~> 2.0)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
