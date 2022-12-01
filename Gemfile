@@ -17,7 +17,7 @@ gem 'sanitize'
 gem 'sass', '~> 3.7', require: false
 gem 'sassc', '~> 2.2', require: false
 gem 'sd_notify'
-gem 'sinatra', '~> 2.0'
+gem 'sinatra', '~> 2.2'
 gem 'sinatra-contrib', '~> 2.0', require: false
 gem 'tux', '~> 0.3', require: false
 gem 'uglifier', '~> 4.2', require: false
